@@ -15,6 +15,61 @@ $(function() {
 			series[1].push([x,y2]);
 		}
 	);
-	$.plot("#placeholder", series);
+	$.plot("#placeholder", [
+        { data: series[0], label: "old-time(iters)", },
+        { data: series[1], label: "new-time(iters)", },
+    ],
+    {
+        series: {
+            lines: {
+                show: true
+            },
+            points: {
+                show: true
+            }
+        },
+        grid: {
+            hoverable: true,
+            clickable: true
+        },
+    }
+          );
+
+		$("<div id='tooltip'></div>").css({
+			position: "absolute",
+			display: "none",
+			border: "1px solid #fdd",
+			padding: "2px",
+			"background-color": "#fee",
+			opacity: 0.80
+		}).appendTo("body");
+
+		$("#placeholder").bind("plothover", function (event, pos, item) {
+
+            {
+				var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+				$("#hoverdata").text(str);
+            }
+
+            {
+				if (item) {
+					var x = item.datapoint[0].toFixed(2),
+						y = item.datapoint[1].toFixed(2);
+
+					$("#tooltip").html(item.series.label + " of " + x + " = " + y)
+						.css({top: item.pageY+5, left: item.pageX+5})
+						.fadeIn(200);
+				} else {
+					$("#tooltip").hide();
+				}
+			}
+		});
+
+		$("#placeholder").bind("plotclick", function (event, pos, item) {
+			if (item) {
+				$("#clickdata").text(" - click point " + item.dataIndex + " in " + item.series.label);
+				plot.highlight(item.series, item.datapoint);
+			}
+		});
 	$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 });
