@@ -1,5 +1,3 @@
-/// <reference path="jquery.d.ts" />
-
 module jquery.flot {
     interface plotOptions {
         colors?: any[];
