@@ -1,4 +1,4 @@
-module jquery.flot {
+declare module jquery.flot {
     interface plotOptions {
         colors?: any[];
         series?: seriesOptions;
