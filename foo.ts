@@ -8,32 +8,32 @@ $(function() {
 	lines.forEach(
 		function (l) {
 			var fields = l.split("\t");
-			var x:number = fields[0] + 0;
-			var y1:number = fields[1] + 0;
-			var y2:number = fields[3] + 0;
+			var x:number = parseFloat(fields[0]);
+			var y1:number = parseFloat(fields[1]);
+			var y2:number = parseFloat(fields[3]);
 			series[0].push([x,y1]);
 			series[1].push([x,y2]);
 		}
 	);
-	$.plot("#placeholder", [
-        { data: series[0], label: "old-time(iters)", },
-        { data: series[1], label: "new-time(iters)", },
-    ],
-    {
-        series: {
-            lines: {
-                show: true
+    $.plot("#placeholder", [
+            { data: series[0], label: "old-time(iters)", },
+            { data: series[1], label: "new-time(iters)", },
+        ],
+        {
+            series: {
+                lines: {
+                    show: true
+                },
+                points: {
+                    show: true
+                }
             },
-            points: {
-                show: true
-            }
-        },
-        grid: {
-            hoverable: true,
-            clickable: true
-        },
-    }
-          );
+            grid: {
+                hoverable: true,
+                clickable: true
+            },
+        }
+    );
 
 		$("<div id='tooltip'></div>").css({
 			position: "absolute",
