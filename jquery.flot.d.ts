@@ -38,7 +38,7 @@ declare module jquery.flot {
         labelMargin?: number;
         axisMargin?: number;
         markings?: any;             //array of markings or (fn: axes -> array of markings)
-        borderWidth: number;
+        borderWidth?: number;
         borderColor?: any;          // color or null
         minBorderMargin?: number;       // or null
         clickable?: boolean;
@@ -210,4 +210,11 @@ declare module jquery.flot {
 interface JQueryStatic {
     plot(placeholder: JQuery, data: jquery.flot.dataSeries[], options?: jquery.flot.plotOptions): jquery.flot.plot;
     plot(placeholder: JQuery, data: any[], options?: jquery.flot.plotOptions): jquery.flot.plot;
+    bind(eventType: string, handler: (eventObject: JQueryEventObject, pos: any, item: any) => any): JQuery;
+}
+
+interface JQuery {
+    plot(placeholder: JQuery, data: jquery.flot.dataSeries[], options?: jquery.flot.plotOptions): jquery.flot.plot;
+    plot(placeholder: JQuery, data: any[], options?: jquery.flot.plotOptions): jquery.flot.plot;
+    bind(eventType: string, handler: (eventObject: JQueryEventObject, pos: any, item: any) => any): JQuery;
 }

@@ -13,3 +13,6 @@ jquery.js: flot/jquery.js
 
 clean:
 	rm -f $(FILES)
+
+upload: all
+	rsync -v -a --progress foo.html $(FILES) flot "$${__HOMEPAGE_REMOTE_PATH}/flot-typescript--fc-solve-dbm-solver/"

@@ -15,7 +15,7 @@ $(function() {
 			series[1].push([x,y2]);
 		}
 	);
-    $.plot("#placeholder", [
+    var plot = $.plot($("#placeholder"), [
             { data: series[0], label: "old-time(iters)", },
             { data: series[1], label: "new-time(iters)", },
         ],
@@ -63,13 +63,14 @@ $(function() {
 					$("#tooltip").hide();
 				}
 			}
+            return false;
 		});
 
 		$("#placeholder").bind("plotclick", function (event, pos, item) {
 			if (item) {
 				$("#clickdata").text(" - click point " + item.dataIndex + " in " + item.series.label);
-				plot.highlight(item.series, item.datapoint);
+                plot.highlight(item.series, item.datapoint);
 			}
 		});
-	$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+	// $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 });
