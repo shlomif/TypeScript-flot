@@ -11,10 +11,20 @@
     <script type="text/javascript" src="jquery.flot.js"></script>
 </head>
 <body>
+    <h1>Freecell Solver’s depth_dbm_solver’s Old-vs-New Benchmark Progress</h1>
     <div class="demo-container">
         <div id="placeholder" class="demo-placeholder"></div>
     </div>
-<textarea id="data" style="height:100px;" cols="80">
+    <h2>Explanation</h2>
+    <p>
+    This chart shows the running time in seconds since the start of Freecell
+    Solver’s depth_dbm_solver before and after
+    <a href="https://github.com/shlomif/fc-solve/commit/49558ea380bbb2812d514ae014ed58da9283e8a0">an optimisation</a>
+    of converting from GMP’s BigIntegers to GCC’s “__int128”s (lower
+    is better).
+    </p>
+    <div>
+<textarea id="data" style="height:100px;" cols="80" rows="20">
 OldIterations	OldTimeSinceStart	NewTimeSinceStart
 200000	1.31821012496948	0.634008884429932
 300000	2.49772810935974	1.28861284255981
@@ -1078,6 +1088,7 @@ OldIterations	OldTimeSinceStart	NewTimeSinceStart
 106100000	1510.51469612122	1051.63103890419
 106175321	1510.94977021217	1052.10817599297
 </textarea>
+    </div>
 <script type="text/javascript" src="foo.js"></script>
 </body>
 </html>
