@@ -10,7 +10,7 @@ $(function() {
 			var fields = l.split("\t");
 			var x:number = parseFloat(fields[0]);
 			var y1:number = parseFloat(fields[1]);
-			var y2:number = parseFloat(fields[3]);
+			var y2:number = parseFloat(fields[2]);
 			series[0].push([x,y1]);
 			series[1].push([x,y2]);
 		}
